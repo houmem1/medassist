@@ -1,0 +1,9 @@
+# Lecteur de radiographies thoraciques, environnement séparé : %USERPROFILE%\open-webui\cxr-venv
+# torch CPU suffit (une radio en 1 à 2 s) et laisse la carte graphique à Ollama.
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch==2.15.0
+torchvision==0.29.2
+torchxrayvision==1.5.7
+numpy>=2.0
+scipy>=1.14
+pillow>=10.0

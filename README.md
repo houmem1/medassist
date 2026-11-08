@@ -2,7 +2,11 @@
 
 Parti du tutoriel freeCodeCamp *Build Your Own Healthcare AI Assistant with MedGemma, Ollama and Open WebUI*, puis renforcé pour la fiabilité. Machine : RTX 4070 Laptop 8 Go, 32 Go RAM, Windows 11.
 
-Code : https://github.com/houmem1/medassist (licence MIT). Les documents HAS et OMS ne sont pas redistribués : chacun les télécharge depuis les sites officiels (section « Base documentaire »).
+Code : https://github.com/houmem1/medassist (licence MIT). Les documents HAS et OMS ne sont pas redistribués : chacun les télécharge depuis les sites officiels (section « Base documentaire »). Pour l'installer chez vous : section « Installation sur un nouveau poste ».
+
+![MedAssist Pro : réponse sourcée HAS et OMS, avec renvoi aux pages des PDF](docs/capture_reponse.png)
+
+*Réponse de MedAssist Pro : ligne de vérification, tableau HAS / OMS, renvois [n] vers les pages des PDF. Autres captures et [vidéo de démonstration (40 s)](docs/demo_medassist.mp4) dans [docs/](docs/).*
 
 > ⚠️ **Ce n'est pas un dispositif médical.** Aide à la décision et à l'information, qui ne remplace ni le jugement clinique ni les sources officielles (RCP, Vidal, recommandations). Aucune donnée ne quitte ce PC, mais n'y saisissez pas de données patient identifiantes.
 
@@ -250,6 +254,53 @@ C:\Users\hprof\open-webui\cxr-venv\Scripts\python.exe C:\Users\hprof\open-webui\
 
 Le spécialiste donnera alors un verdict adulte, croisé avec MedGemma. En simulation, il atteint une spécificité de 92 % pour une sensibilité de 67 %. Vérifiez-le sur quelques cas pathologiques connus de votre service avant de vous y fier.
 
+## Installation sur un nouveau poste
+
+Testé sur un seul PC (Windows 11, RTX 4070 Laptop 8 Go, 32 Go de RAM) : sur un autre poste, attendez-vous à quelques ajustements, et ouvrez une *issue* si une étape bloque. Comptez environ 30 Go de disque pour les modèles. Une carte graphique de 8 Go ou plus est recommandée pour `qwen3.6:35b` ; sans elle, il tourne en RAM, beaucoup plus lentement. Tout ce qui suit est fait une fois ; ensuite, plus aucune connexion n'est nécessaire.
+
+1. **Ollama** : installez-le depuis ollama.com, puis téléchargez les trois modèles (~28 Go) :
+   ```bash
+   ollama pull qwen3.6:35b
+   ollama pull medgemma:4b
+   ollama pull bge-m3
+   ```
+2. **Le code** : `git clone https://github.com/houmem1/medassist` (ou l'archive ZIP du dépôt), puis placez-vous dans ce dossier.
+3. **Open WebUI** (Python 3.11), dans le dossier d'installation, par défaut `%USERPROFILE%\open-webui` (voir `MEDASSIST_ROOT` plus bas) :
+   ```bash
+   py -3.11 -m venv %USERPROFILE%\open-webui\venv
+   %USERPROFILE%\open-webui\venv\Scripts\pip install -r requirements.txt
+   ```
+4. **Lecteur de radiographies** (facultatif, recommandé), dans un environnement séparé : torch CPU est lourd, et la carte graphique reste à Ollama.
+   ```bash
+   py -3.11 -m venv %USERPROFILE%\open-webui\cxr-venv
+   %USERPROFILE%\open-webui\cxr-venv\Scripts\pip install -r requirements-cxr.txt
+   ```
+   Au premier appel, TorchXRayVision télécharge ses poids (28 Mo) dans `%USERPROFILE%\.torchxrayvision`. Pour le faire tout de suite :
+   ```bash
+   %USERPROFILE%\open-webui\cxr-venv\Scripts\python -c "import torchxrayvision as x; x.models.DenseNet(weights='densenet121-res224-all')"
+   ```
+5. **Premier lancement**, depuis le dossier du code :
+   ```bash
+   powershell -ExecutionPolicy Bypass -File start-medassist.ps1
+   ```
+   Ouvrez http://localhost:8080 et créez votre compte : le premier compte créé est administrateur. Arrêtez ensuite le serveur (Ctrl+C). L'avertissement « Lecteur radio absent » est normal à ce stade.
+6. **Installer MedAssist dans Open WebUI** (serveur arrêté) :
+   ```bash
+   %USERPROFILE%\open-webui\venv\Scripts\python.exe openwebui\install.py
+   ```
+   Le script pose la fonction, les deux profils, l'habillage, et copie dans le dossier d'installation le lecteur radio, `start-medassist.ps1`, `doctor.py` et `knowledge\ingest.py`. Le dossier du code peut ensuite être déplacé ou supprimé.
+7. **Base documentaire** : déposez vos PDF (recommandations HAS, OMS, protocoles de votre service) dans `%USERPROFILE%\open-webui\knowledge\docs`, puis, Ollama lancé :
+   ```bash
+   %USERPROFILE%\open-webui\venv\Scripts\python.exe %USERPROFILE%\open-webui\knowledge\ingest.py
+   ```
+   Sans index, MedAssist répond sans sources. Les documents utilisés ici sont listés dans la section « Base documentaire ».
+8. **Relancer** avec `powershell -ExecutionPolicy Bypass -File %USERPROFILE%\open-webui\start-medassist.ps1`, puis fermez les inscriptions : *Admin > Paramètres > Général > Autoriser les inscriptions*. Pour tout vérifier d'un coup :
+   ```bash
+   %USERPROFILE%\open-webui\venv\Scripts\python.exe %USERPROFILE%\open-webui\doctor.py
+   ```
+
+Hors Windows : `start-medassist.ps1` est le seul élément propre à Windows ; le reste est du Python. Il se résume à des variables d'environnement lisibles dans le script (`DATA_DIR`, `OFFLINE_MODE`, `RAG_EMBEDDING_ENGINE=ollama`, `WEBUI_SECRET_KEY`…), au démarrage de `radiology/service.py` avec le Python de `cxr-venv`, puis à `open-webui serve --host 127.0.0.1 --port 8080`.
+
 ## Installation et utilisation
 
 Les chemins ci-dessous sont ceux de ce PC (`C:\Users\hprof\open-webui`). Sur un autre poste, le dossier d'installation est par défaut `%USERPROFILE%\open-webui` ; pour un autre emplacement, définissez la variable d'environnement `MEDASSIST_ROOT` avant de lancer `install.py`, `start-medassist.ps1` ou `doctor.py` (l'index documentaire, le lecteur radio et les données d'Open WebUI y sont cherchés).
@@ -356,6 +407,8 @@ Relecture complète du code (pipeline, lecteur radio, indexation, installation, 
 | [radiology/](radiology/) | lecteur spécialisé (modèle, service local, seuils calibrés, calibration sur site) |
 | [start-medassist.ps1](start-medassist.ps1) | lancement : attend Ollama, vérifie les modèles, clé de session fixe, mode hors ligne, lecteur radio, Open WebUI |
 | [doctor.py](doctor.py) | contrôle de l'installation (copié dans `C:\Users\hprof\open-webui`) |
+| [requirements.txt](requirements.txt), [requirements-cxr.txt](requirements-cxr.txt) | dépendances Python des deux environnements (Open WebUI ; lecteur radio) |
+| [docs/](docs/) | captures de l'interface et vidéo de démonstration (40 s) |
 | [openwebui/make_branding.py](openwebui/make_branding.py) | génère le logo et les icônes MedAssist dans [openwebui/static](openwebui/static) (avec la feuille de style `custom.css`) |
 | [tests/test_units.py](tests/test_units.py) | 36 tests unitaires hors ligne du pipeline (tri, âge, sonde, sources, doses, historique, erreurs) |
 | [eval/](eval/) | bancs d'essai (général : `medbench.py` ; base documentaire : `docbench.py`), tri des extraits (`kb_relevance.py`), contrôle des citations (`citation_check.py`), configurations comparées, journaux et résultats |

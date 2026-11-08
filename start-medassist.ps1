@@ -44,9 +44,12 @@ $env:RAG_OLLAMA_BASE_URL  = $Ollama
 $env:OFFLINE_MODE         = "true"
 $env:HF_HUB_OFFLINE       = "1"
 $env:ENABLE_VERSION_UPDATE_CHECK = "False"
-# Avast Web Shield intercepte le HTTPS : Python doit connaître sa racine (cf. ca-bundle.pem)
-$env:SSL_CERT_FILE        = "$Root\ca-bundle.pem"
-$env:REQUESTS_CA_BUNDLE   = "$Root\ca-bundle.pem"
+# Antivirus interceptant le HTTPS (Avast Web Shield…) : si un ca-bundle.pem est présent dans le dossier
+# d'installation, Python l'utilise ; sinon, rien à faire (tout est local de toute façon)
+if (Test-Path "$Root\ca-bundle.pem") {
+    $env:SSL_CERT_FILE      = "$Root\ca-bundle.pem"
+    $env:REQUESTS_CA_BUNDLE = "$Root\ca-bundle.pem"
+}
 # Pas de télémétrie
 $env:SCARF_NO_ANALYTICS   = "true"
 $env:DO_NOT_TRACK         = "true"

@@ -1,0 +1,4 @@
+# Environnement d'Open WebUI (Python 3.11) : %USERPROFILE%\open-webui\venv
+# Versions testées le 8 novembre 2026 ; numpy et pillow viennent avec open-webui.
+open-webui==0.13.0
+pypdf>=6.0
