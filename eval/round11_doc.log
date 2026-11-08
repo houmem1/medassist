@@ -1,0 +1,6 @@
+  pro_full       d04 OK   64.2s
+  patient_full   d04 OK   40.6s
+
+=== RÉSUMÉ ===
+pro_full        1/1  (100.0%)  moy  64.2s  has=1/1  échecs: 
+patient_full    1/1  (100.0%)  moy  40.6s  has=1/1  échecs: 

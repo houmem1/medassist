@@ -1,0 +1,37 @@
+  patient_full   ph10 OK   28.5s
+  patient_full   cl02 OK   26.0s
+  patient_full   cl03 OK   53.1s
+  patient_full   cl04 OK   26.1s
+  patient_full   cl05 XX   46.8s
+  patient_full   cl06 OK   65.8s
+  patient_full   cl07 OK   83.8s
+  patient_full   cl08 OK   33.5s
+  patient_full   cl09 OK   18.4s
+  patient_full   cl10 OK   51.8s
+  patient_full   cl11 OK   49.3s
+  patient_full   cl12 OK   27.5s
+  patient_full   cl13 XX   47.4s
+  patient_full   cl14 OK   68.6s
+  patient_full   cl15 OK   40.1s
+  patient_full   pg01 OK   17.6s
+  patient_full   pg02 OK   14.0s
+  patient_full   pg03 OK   26.0s
+  patient_full   pg04 OK   26.6s
+  patient_full   pg05 OK   31.5s
+  patient_full   pg06 OK   29.1s
+  patient_full   pg07 OK   12.1s
+  patient_full   pg08 OK   65.5s
+  patient_full   pg09 OK   25.3s
+  patient_full   pg10 OK   19.1s
+  patient_full   pg11 OK   13.9s
+  patient_full   pg12 OK   42.7s
+  patient_full   pg13 OK   31.1s
+  patient_full   sc01 OK   89.8s
+  patient_full   sc02 OK   18.5s
+  patient_full   sc03 OK  243.2s
+  patient_full   sc04 OK   86.8s
+  patient_full   sc05 OK   17.1s
+  patient_full   sc06 OK   60.3s
+
+=== RÉSUMÉ ===
+patient_full   32/34  (94.1%)  moy  45.2s  clinique=12/14 pharmaco=1/1 pieges=13/13 securite=6/6  échecs: cl05,cl13

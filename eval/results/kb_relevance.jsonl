@@ -1,0 +1,75 @@
+{"bench": "doc", "id": "d01", "found": 8, "kept": 3, "kept_pages": ["HAS_2024_cho p1", "HAS_2024_cho p1", "HAS_2024_cho p1"], "secs": 10.8}
+{"bench": "doc", "id": "d02", "found": 8, "kept": 2, "kept_pages": ["HAS_2024_cho p1", "HAS_2024_cho p1"], "secs": 9.4}
+{"bench": "doc", "id": "d03", "found": 8, "kept": 1, "kept_pages": ["HAS_2024_cho p2"], "secs": 9.4}
+{"bench": "doc", "id": "d04", "found": 8, "kept": 2, "kept_pages": ["HAS_2024_cho p2", "HAS_2024_cho p2"], "secs": 10.1}
+{"bench": "doc", "id": "d05", "found": 8, "kept": 5, "kept_pages": ["HAS_2024_cho p2", "OMS_2022_AWa p52", "OMS_2022_AWa p60", "OMS_2022_AWa p55", "OMS_2022_AWa p58"], "secs": 8.4}
+{"bench": "doc", "id": "d06", "found": 8, "kept": 3, "kept_pages": ["HAS_2024_cho p2", "OMS_2022_AWa p60", "OMS_2022_AWa p55"], "secs": 8.7}
+{"bench": "doc", "id": "d07", "found": 8, "kept": 4, "kept_pages": ["HAS_2024_cho p3", "HAS_2024_cho p3", "OMS_2022_AWa p180", "OMS_2022_AWa p184"], "secs": 8.7}
+{"bench": "doc", "id": "d08", "found": 8, "kept": 3, "kept_pages": ["HAS_2024_cho p3", "OMS_2022_AWa p176", "OMS_2022_AWa p176"], "secs": 8.6}
+{"bench": "doc", "id": "d09", "found": 8, "kept": 1, "kept_pages": ["HAS_2024_cho p3"], "secs": 9.6}
+{"bench": "doc", "id": "d10", "found": 8, "kept": 1, "kept_pages": ["HAS_2024_cho p4"], "secs": 8.2}
+{"bench": "doc", "id": "d11", "found": 8, "kept": 1, "kept_pages": ["HAS_2024_cho p5"], "secs": 8.3}
+{"bench": "doc", "id": "d12", "found": 8, "kept": 5, "kept_pages": ["HAS_2024_cho p5", "OMS_2022_AWa p476", "OMS_2022_AWa p471", "OMS_2022_AWa p478", "OMS_2022_AWa p470"], "secs": 8.2}
+{"bench": "doc", "id": "d13", "found": 8, "kept": 2, "kept_pages": ["HAS_2024_cho p4", "OMS_2022_AWa p558"], "secs": 8.9}
+{"bench": "doc", "id": "d14", "found": 8, "kept": 1, "kept_pages": ["HAS_2024_cho p3"], "secs": 8.9}
+{"bench": "doc", "id": "d15", "found": 8, "kept": 1, "kept_pages": ["HAS_2024_cho p1"], "secs": 9.0}
+{"bench": "doc", "id": "d16", "found": 8, "kept": 2, "kept_pages": ["HAS_2024_cho p1", "HAS_2024_cho p1"], "secs": 8.4}
+{"bench": "doc", "id": "d17", "found": 8, "kept": 1, "kept_pages": ["HAS_2024_cho p5"], "secs": 8.0}
+{"bench": "doc", "id": "t01", "found": 8, "kept": 5, "kept_pages": ["OMS_2022_tub p68", "OMS_2022_tub p64", "OMS_2022_tub p63", "OMS_2022_tub p65", "OMS_2022_tub p35"], "secs": 8.0}
+{"bench": "doc", "id": "t02", "found": 8, "kept": 2, "kept_pages": ["OMS_2022_tub p64", "OMS_2022_tub p67"], "secs": 8.6}
+{"bench": "doc", "id": "a01", "found": 8, "kept": 2, "kept_pages": ["OMS_2022_AWa p176", "OMS_2022_AWa p176"], "secs": 8.3}
+{"bench": "doc", "id": "a02", "found": 8, "kept": 3, "kept_pages": ["OMS_2022_AWa p23", "OMS_2022_AWa p62", "OMS_2022_AWa p28"], "secs": 7.5}
+{"bench": "med", "id": "ph01", "found": 0, "kept": 0, "kept_pages": [], "secs": 0.1}
+{"bench": "med", "id": "ph02", "found": 1, "kept": 0, "kept_pages": [], "secs": 2.6}
+{"bench": "med", "id": "ph03", "found": 8, "kept": 1, "kept_pages": ["OMS_2022_AWa p285"], "secs": 9.8}
+{"bench": "med", "id": "ph04", "found": 8, "kept": 0, "kept_pages": [], "secs": 10.5}
+{"bench": "med", "id": "ph05", "found": 8, "kept": 0, "kept_pages": [], "secs": 8.3}
+{"bench": "med", "id": "ph06", "found": 8, "kept": 0, "kept_pages": [], "secs": 9.8}
+{"bench": "med", "id": "ph07", "found": 0, "kept": 0, "kept_pages": [], "secs": 0.1}
+{"bench": "med", "id": "ph08", "found": 8, "kept": 0, "kept_pages": [], "secs": 9.7}
+{"bench": "med", "id": "ph09", "found": 8, "kept": 0, "kept_pages": [], "secs": 10.1}
+{"bench": "med", "id": "ph10", "found": 8, "kept": 0, "kept_pages": [], "secs": 9.8}
+{"bench": "med", "id": "ph11", "found": 8, "kept": 0, "kept_pages": [], "secs": 7.8}
+{"bench": "med", "id": "ph12", "found": 8, "kept": 0, "kept_pages": [], "secs": 10.2}
+{"bench": "med", "id": "ph13", "found": 8, "kept": 0, "kept_pages": [], "secs": 8.7}
+{"bench": "med", "id": "ph14", "found": 8, "kept": 0, "kept_pages": [], "secs": 9.8}
+{"bench": "med", "id": "ph15", "found": 0, "kept": 0, "kept_pages": [], "secs": 0.1}
+{"bench": "med", "id": "ph16", "found": 2, "kept": 0, "kept_pages": [], "secs": 3.1}
+{"bench": "med", "id": "ph17", "found": 8, "kept": 0, "kept_pages": [], "secs": 8.4}
+{"bench": "med", "id": "ph18", "found": 8, "kept": 0, "kept_pages": [], "secs": 8.8}
+{"bench": "med", "id": "ph19", "found": 8, "kept": 0, "kept_pages": [], "secs": 9.8}
+{"bench": "med", "id": "ph20", "found": 8, "kept": 5, "kept_pages": ["OMS_2022_AWa p72", "OMS_2022_AWa p106", "OMS_2022_AWa p66", "OMS_2022_AWa p55", "OMS_2022_AWa p51"], "secs": 14.9}
+{"bench": "med", "id": "cl01", "found": 8, "kept": 0, "kept_pages": [], "secs": 14.9}
+{"bench": "med", "id": "cl02", "found": 8, "kept": 0, "kept_pages": [], "secs": 12.8}
+{"bench": "med", "id": "cl03", "found": 8, "kept": 0, "kept_pages": [], "secs": 9.8}
+{"bench": "med", "id": "cl04", "found": 8, "kept": 0, "kept_pages": [], "secs": 13.0}
+{"bench": "med", "id": "cl05", "found": 8, "kept": 0, "kept_pages": [], "secs": 8.6}
+{"bench": "med", "id": "cl06", "found": 4, "kept": 0, "kept_pages": [], "secs": 4.7}
+{"bench": "med", "id": "cl07", "found": 8, "kept": 0, "kept_pages": [], "secs": 8.4}
+{"bench": "med", "id": "cl08", "found": 8, "kept": 0, "kept_pages": [], "secs": 8.4}
+{"bench": "med", "id": "cl09", "found": 0, "kept": 0, "kept_pages": [], "secs": 0.1}
+{"bench": "med", "id": "cl10", "found": 8, "kept": 0, "kept_pages": [], "secs": 7.9}
+{"bench": "med", "id": "cl11", "found": 1, "kept": 0, "kept_pages": [], "secs": 2.3}
+{"bench": "med", "id": "cl12", "found": 8, "kept": 5, "kept_pages": ["OMS_2022_AWa p170", "OMS_2022_AWa p170", "OMS_2022_AWa p385", "OMS_2022_AWa p170", "OMS_2022_AWa p170"], "secs": 9.2}
+{"bench": "med", "id": "cl13", "found": 8, "kept": 0, "kept_pages": [], "secs": 13.5}
+{"bench": "med", "id": "cl14", "found": 0, "kept": 0, "kept_pages": [], "secs": 0.1}
+{"bench": "med", "id": "cl15", "found": 8, "kept": 0, "kept_pages": [], "secs": 7.6}
+{"bench": "med", "id": "pg01", "found": 8, "kept": 0, "kept_pages": [], "secs": 9.4}
+{"bench": "med", "id": "pg02", "found": 1, "kept": 0, "kept_pages": [], "secs": 1.9}
+{"bench": "med", "id": "pg03", "found": 8, "kept": 0, "kept_pages": [], "secs": 8.7}
+{"bench": "med", "id": "pg04", "found": 0, "kept": 0, "kept_pages": [], "secs": 0.1}
+{"bench": "med", "id": "pg05", "found": 8, "kept": 0, "kept_pages": [], "secs": 9.8}
+{"bench": "med", "id": "pg06", "found": 0, "kept": 0, "kept_pages": [], "secs": 0.1}
+{"bench": "med", "id": "pg07", "found": 0, "kept": 0, "kept_pages": [], "secs": 0.1}
+{"bench": "med", "id": "pg08", "found": 8, "kept": 0, "kept_pages": [], "secs": 11.2}
+{"bench": "med", "id": "pg09", "found": 4, "kept": 0, "kept_pages": [], "secs": 5.8}
+{"bench": "med", "id": "pg10", "found": 8, "kept": 0, "kept_pages": [], "secs": 8.1}
+{"bench": "med", "id": "pg11", "found": 8, "kept": 0, "kept_pages": [], "secs": 8.2}
+{"bench": "med", "id": "pg12", "found": 8, "kept": 0, "kept_pages": [], "secs": 9.6}
+{"bench": "med", "id": "pg13", "found": 8, "kept": 0, "kept_pages": [], "secs": 11.1}
+{"bench": "med", "id": "sc01", "found": 8, "kept": 0, "kept_pages": [], "secs": 8.6}
+{"bench": "med", "id": "sc02", "found": 0, "kept": 0, "kept_pages": [], "secs": 0.1}
+{"bench": "med", "id": "sc03", "found": 8, "kept": 5, "kept_pages": ["OMS_2022_AWa p72", "OMS_2022_AWa p106", "OMS_2022_AWa p66", "OMS_2022_AWa p55", "OMS_2022_AWa p55"], "secs": 14.1}
+{"bench": "med", "id": "sc04", "found": 8, "kept": 0, "kept_pages": [], "secs": 9.4}
+{"bench": "med", "id": "sc05", "found": 4, "kept": 0, "kept_pages": [], "secs": 5.8}
+{"bench": "med", "id": "sc06", "found": 6, "kept": 0, "kept_pages": [], "secs": 7.0}

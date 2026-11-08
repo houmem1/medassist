@@ -1,0 +1,75 @@
+doc d01 3/8 ['HAS_2024_cho p1', 'HAS_2024_cho p1', 'HAS_2024_cho p1'] 10.8s
+doc d02 2/8 ['HAS_2024_cho p1', 'HAS_2024_cho p1'] 9.4s
+doc d03 1/8 ['HAS_2024_cho p2'] 9.4s
+doc d04 2/8 ['HAS_2024_cho p2', 'HAS_2024_cho p2'] 10.1s
+doc d05 5/8 ['HAS_2024_cho p2', 'OMS_2022_AWa p52', 'OMS_2022_AWa p60', 'OMS_2022_AWa p55', 'OMS_2022_AWa p58'] 8.4s
+doc d06 3/8 ['HAS_2024_cho p2', 'OMS_2022_AWa p60', 'OMS_2022_AWa p55'] 8.7s
+doc d07 4/8 ['HAS_2024_cho p3', 'HAS_2024_cho p3', 'OMS_2022_AWa p180', 'OMS_2022_AWa p184'] 8.7s
+doc d08 3/8 ['HAS_2024_cho p3', 'OMS_2022_AWa p176', 'OMS_2022_AWa p176'] 8.6s
+doc d09 1/8 ['HAS_2024_cho p3'] 9.6s
+doc d10 1/8 ['HAS_2024_cho p4'] 8.2s
+doc d11 1/8 ['HAS_2024_cho p5'] 8.3s
+doc d12 5/8 ['HAS_2024_cho p5', 'OMS_2022_AWa p476', 'OMS_2022_AWa p471', 'OMS_2022_AWa p478', 'OMS_2022_AWa p470'] 8.2s
+doc d13 2/8 ['HAS_2024_cho p4', 'OMS_2022_AWa p558'] 8.9s
+doc d14 1/8 ['HAS_2024_cho p3'] 8.9s
+doc d15 1/8 ['HAS_2024_cho p1'] 9.0s
+doc d16 2/8 ['HAS_2024_cho p1', 'HAS_2024_cho p1'] 8.4s
+doc d17 1/8 ['HAS_2024_cho p5'] 8.0s
+doc t01 5/8 ['OMS_2022_tub p68', 'OMS_2022_tub p64', 'OMS_2022_tub p63', 'OMS_2022_tub p65', 'OMS_2022_tub p35'] 8.0s
+doc t02 2/8 ['OMS_2022_tub p64', 'OMS_2022_tub p67'] 8.6s
+doc a01 2/8 ['OMS_2022_AWa p176', 'OMS_2022_AWa p176'] 8.3s
+doc a02 3/8 ['OMS_2022_AWa p23', 'OMS_2022_AWa p62', 'OMS_2022_AWa p28'] 7.5s
+med ph01 0/0 [] 0.1s
+med ph02 0/1 [] 2.6s
+med ph03 1/8 ['OMS_2022_AWa p285'] 9.8s
+med ph04 0/8 [] 10.5s
+med ph05 0/8 [] 8.3s
+med ph06 0/8 [] 9.8s
+med ph07 0/0 [] 0.1s
+med ph08 0/8 [] 9.7s
+med ph09 0/8 [] 10.1s
+med ph10 0/8 [] 9.8s
+med ph11 0/8 [] 7.8s
+med ph12 0/8 [] 10.2s
+med ph13 0/8 [] 8.7s
+med ph14 0/8 [] 9.8s
+med ph15 0/0 [] 0.1s
+med ph16 0/2 [] 3.1s
+med ph17 0/8 [] 8.4s
+med ph18 0/8 [] 8.8s
+med ph19 0/8 [] 9.8s
+med ph20 5/8 ['OMS_2022_AWa p72', 'OMS_2022_AWa p106', 'OMS_2022_AWa p66', 'OMS_2022_AWa p55', 'OMS_2022_AWa p51'] 14.9s
+med cl01 0/8 [] 14.9s
+med cl02 0/8 [] 12.8s
+med cl03 0/8 [] 9.8s
+med cl04 0/8 [] 13.0s
+med cl05 0/8 [] 8.6s
+med cl06 0/4 [] 4.7s
+med cl07 0/8 [] 8.4s
+med cl08 0/8 [] 8.4s
+med cl09 0/0 [] 0.1s
+med cl10 0/8 [] 7.9s
+med cl11 0/1 [] 2.3s
+med cl12 5/8 ['OMS_2022_AWa p170', 'OMS_2022_AWa p170', 'OMS_2022_AWa p385', 'OMS_2022_AWa p170', 'OMS_2022_AWa p170'] 9.2s
+med cl13 0/8 [] 13.5s
+med cl14 0/0 [] 0.1s
+med cl15 0/8 [] 7.6s
+med pg01 0/8 [] 9.4s
+med pg02 0/1 [] 1.9s
+med pg03 0/8 [] 8.7s
+med pg04 0/0 [] 0.1s
+med pg05 0/8 [] 9.8s
+med pg06 0/0 [] 0.1s
+med pg07 0/0 [] 0.1s
+med pg08 0/8 [] 11.2s
+med pg09 0/4 [] 5.8s
+med pg10 0/8 [] 8.1s
+med pg11 0/8 [] 8.2s
+med pg12 0/8 [] 9.6s
+med pg13 0/8 [] 11.1s
+med sc01 0/8 [] 8.6s
+med sc02 0/0 [] 0.1s
+med sc03 5/8 ['OMS_2022_AWa p72', 'OMS_2022_AWa p106', 'OMS_2022_AWa p66', 'OMS_2022_AWa p55', 'OMS_2022_AWa p55'] 14.1s
+med sc04 0/8 [] 9.4s
+med sc05 0/4 [] 5.8s
+med sc06 0/6 [] 7.0s

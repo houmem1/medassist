@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.pyc
+
+# Dossier de communication (brouillons de posts, captures) : hors dépôt
+communication/
+
+# Données locales : les PDF (HAS, OMS) ne sont pas redistribués, l'index se reconstruit avec knowledge/ingest.py
+knowledge/docs/
+knowledge/index/
+
+# Résultats de banc volumineux (les passages de référence sont conservés dans eval/results/round*/)
+eval/results/archive/
+
+# Secrets et environnement
+.webui_secret_key
+*.pem
+.env

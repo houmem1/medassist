@@ -1,0 +1,12 @@
+  pro_full       ph03 OK   98.8s
+  pro_full       ph20 OK   52.1s
+  pro_full       cl12 OK   36.1s
+  pro_full       sc03 OK  102.8s
+  patient_full   ph03 OK   16.2s
+  patient_full   ph20 OK   27.2s
+  patient_full   cl12 OK   24.1s
+  patient_full   sc03 OK  142.3s
+
+=== RÉSUMÉ ===
+pro_full        4/4  (100.0%)  moy  72.5s  clinique=1/1 pharmaco=2/2 securite=1/1  échecs: 
+patient_full    4/4  (100.0%)  moy  52.5s  clinique=1/1 pharmaco=2/2 securite=1/1  échecs: 

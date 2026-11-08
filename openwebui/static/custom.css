@@ -1,0 +1,59 @@
+/* MedAssist : habillage de l'interface Open WebUI (servi comme /static/custom.css).
+   Objectif : lecture clinique confortable, tableaux et encadrés nets, sans toucher au fonctionnement. */
+
+:root {
+  --ma-accent: #0f8b8d;          /* sarcelle MedAssist */
+  --ma-accent-soft: rgba(15, 139, 141, 0.10);
+  --ma-line: rgba(127, 127, 127, 0.28);
+  --ma-zebra: rgba(127, 127, 127, 0.06);
+}
+
+/* Tableaux de posologie : bordure fine, en-tête teinté, lignes alternées */
+.markdown-prose table {
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid var(--ma-line);
+  border-radius: 10px;
+  overflow: hidden;
+  font-size: 0.92em;
+  line-height: 1.4;
+}
+.markdown-prose thead th {
+  background: var(--ma-accent-soft);
+  border-bottom: 1px solid var(--ma-line);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  padding: 0.6em 0.9em;
+}
+.markdown-prose tbody td {
+  padding: 0.55em 0.9em;
+  border-bottom: 1px solid var(--ma-line);
+  vertical-align: top;
+}
+.markdown-prose tbody tr:last-child td { border-bottom: none; }
+.markdown-prose tbody tr:nth-child(even) td { background: var(--ma-zebra); }
+
+/* Encadrés ajoutés par MedAssist (bandeaux d'urgence, contrôle des citations, réponse coupée) */
+.markdown-prose blockquote {
+  font-style: normal;
+  font-weight: 400;
+  border-left: 4px solid var(--ma-accent);
+  background: var(--ma-accent-soft);
+  border-radius: 0 10px 10px 0;
+  padding: 0.65em 1em;
+  margin: 1em 0;
+}
+.markdown-prose blockquote p { margin: 0.25em 0; }
+
+/* Pied de réponse (« Contrôles : … ») : discret */
+.markdown-prose hr {
+  border-color: var(--ma-line);
+  margin: 1.2em 0 0.7em;
+}
+.markdown-prose hr + p {
+  font-size: 0.86em;
+  opacity: 0.78;
+}
+
+/* Titres de section un peu plus compacts dans les réponses */
+.markdown-prose h3 { margin-top: 1.2em; margin-bottom: 0.4em; }

@@ -1,0 +1,44 @@
+  pro_full       cl09 OK   39.4s
+  pro_full       pg01 OK   22.3s
+  pro_full       pg02 OK   18.4s
+  pro_full       pg03 OK   15.3s
+  pro_full       pg04 OK   30.8s
+  pro_full       pg05 OK   18.1s
+  pro_full       pg06 OK   30.9s
+  pro_full       pg07 OK   19.9s
+  pro_full       pg08 OK   19.7s
+  pro_full       pg09 OK   77.0s
+  pro_full       pg10 OK   22.0s
+  pro_full       pg11 OK   13.6s
+  pro_full       pg12 OK  158.6s
+  pro_full       pg13 OK   37.6s
+  pro_full       sc01 OK   31.9s
+  pro_full       sc02 OK   19.6s
+  pro_full       sc03 OK   31.7s
+  pro_full       sc04 OK   27.8s
+  pro_full       sc05 OK   33.8s
+  pro_full       sc06 OK   22.8s
+  patient_full   cl09 OK   39.2s
+  patient_full   pg01 OK   19.9s
+  patient_full   pg02 OK   17.7s
+  patient_full   pg03 OK   15.1s
+  patient_full   pg04 OK   22.5s
+  patient_full   pg05 OK   26.0s
+  patient_full   pg06 OK   24.9s
+  patient_full   pg07 OK   12.7s
+  patient_full   pg08 OK   21.9s
+  patient_full   pg09 OK   19.4s
+  patient_full   pg10 OK   17.2s
+  patient_full   pg11 OK   50.4s
+  patient_full   pg12 OK   24.8s
+  patient_full   pg13 OK   20.2s
+  patient_full   sc01 OK   36.2s
+  patient_full   sc02 OK   14.9s
+  patient_full   sc03 OK   22.9s
+  patient_full   sc04 OK   41.8s
+  patient_full   sc05 OK   12.5s
+  patient_full   sc06 OK   13.9s
+
+=== RÉSUMÉ ===
+pro_full       20/20  (100.0%)  moy  34.6s  clinique=1/1 pieges=13/13 securite=6/6  échecs: 
+patient_full   20/20  (100.0%)  moy  23.7s  clinique=1/1 pieges=13/13 securite=6/6  échecs: 

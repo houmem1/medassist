@@ -1,0 +1,10 @@
+  pro_full       cl09 OK   51.4s
+=== RÉSUMÉ ===
+pro_full        1/1  (100.0%)  moy  51.4s  clinique=1/1  échecs: 
+  patient_full   d16 OK   91.4s
+patient_full    1/1  (100.0%)  moy  91.4s  has=1/1  échecs: 
+  pro_full       cl09 XX   26.3s
+=== RÉSUMÉ ===
+pro_full        0/1  ( 0.0%)  moy  26.3s  clinique=0/1  échecs: cl09
+  patient_full   d16 OK  225.9s
+patient_full    1/1  (100.0%)  moy 225.9s  has=1/1  échecs: 

@@ -1,0 +1,46 @@
+  pro_full       d01 OK   27.4s
+  pro_full       d02 OK   17.9s
+  pro_full       d03 OK   24.2s
+  pro_full       d04 OK   59.0s
+  pro_full       d05 XX   19.6s
+  pro_full       d06 OK   66.5s
+  pro_full       d07 XX  116.2s
+  pro_full       d08 OK   73.2s
+  pro_full       d09 OK   34.3s
+  pro_full       d10 OK   33.0s
+  pro_full       d11 OK   36.0s
+  pro_full       d12 OK   67.3s
+  pro_full       d13 OK   26.8s
+  pro_full       d14 OK   52.5s
+  pro_full       d15 OK   24.0s
+  pro_full       d16 OK   69.1s
+  pro_full       d17 OK   22.8s
+  pro_full       t01 OK   32.3s
+  pro_full       t02 OK   72.0s
+  pro_full       a01 OK   66.7s
+  pro_full       a02 OK   32.4s
+  pro_nokb       d01 OK   50.0s
+  pro_nokb       d02 OK  192.4s
+  pro_nokb       d03 XX  126.1s
+  pro_nokb       d04 OK  111.2s
+  pro_nokb       d05 XX  179.5s
+  pro_nokb       d06 OK  123.4s
+  pro_nokb       d07 OK  102.6s
+  pro_nokb       d08 OK   29.0s
+  pro_nokb       d09 XX   74.4s
+  pro_nokb       d10 OK  136.4s
+  pro_nokb       d11 OK   68.6s
+  pro_nokb       d12 OK  114.6s
+  pro_nokb       d13 XX   68.9s
+  pro_nokb       d14 OK  106.1s
+  pro_nokb       d15 OK  124.5s
+  pro_nokb       d16 XX   74.0s
+  pro_nokb       d17 XX  154.1s
+  pro_nokb       t01 XX   21.2s
+  pro_nokb       t02 OK  103.2s
+  pro_nokb       a01 XX  133.7s
+  pro_nokb       a02 OK   28.6s
+
+=== RÉSUMÉ ===
+pro_full       19/21  (90.5%)  moy  46.3s  has=15/17 oms_aware=2/2 oms_tb=2/2  échecs: d05,d07
+pro_nokb       13/21  (61.9%)  moy 101.1s  has=11/17 oms_aware=1/2 oms_tb=1/2  échecs: d03,d05,d09,d13,d16,d17,t01,a01

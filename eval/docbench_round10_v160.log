@@ -1,0 +1,46 @@
+  pro_full       d01 OK  123.9s
+  pro_full       d02 OK   62.0s
+  pro_full       d03 OK   32.3s
+  pro_full       d04 OK   33.9s
+  pro_full       d05 OK   38.4s
+  pro_full       d06 OK   75.8s
+  pro_full       d07 OK   33.3s
+  pro_full       d08 OK   32.4s
+  pro_full       d09 OK   42.3s
+  pro_full       d10 OK   52.0s
+  pro_full       d11 OK   30.5s
+  pro_full       d12 OK   92.6s
+  pro_full       d13 OK  122.2s
+  pro_full       d14 OK  230.3s
+  pro_full       d15 OK   46.2s
+  pro_full       d16 OK   67.2s
+  pro_full       d17 OK   25.6s
+  pro_full       t01 OK   38.7s
+  pro_full       t02 OK   31.6s
+  pro_full       a01 OK   40.5s
+  pro_full       a02 OK   60.7s
+  patient_full   d01 OK   27.1s
+  patient_full   d02 OK   30.1s
+  patient_full   d03 OK   33.0s
+  patient_full   d04 OK   56.5s
+  patient_full   d05 OK   41.9s
+  patient_full   d06 OK   36.5s
+  patient_full   d07 OK   34.4s
+  patient_full   d08 OK   32.5s
+  patient_full   d09 OK   42.3s
+  patient_full   d10 OK   30.2s
+  patient_full   d11 OK   29.0s
+  patient_full   d12 OK   81.9s
+  patient_full   d13 OK   36.5s
+  patient_full   d14 OK   29.6s
+  patient_full   d15 OK   35.4s
+  patient_full   d16 XX   54.1s
+  patient_full   d17 OK   29.8s
+  patient_full   t01 OK   67.5s
+  patient_full   t02 OK   26.5s
+  patient_full   a01 OK   40.4s
+  patient_full   a02 OK   38.2s
+
+=== RÉSUMÉ ===
+pro_full       21/21  (100.0%)  moy  62.5s  has=17/17 oms_aware=2/2 oms_tb=2/2  échecs: 
+patient_full   20/21  (95.2%)  moy  39.7s  has=16/17 oms_aware=2/2 oms_tb=2/2  échecs: d16

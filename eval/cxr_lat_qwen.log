@@ -1,0 +1,37 @@
+MCUCXR_0104_1 gauche gauche qwen3.6:35b None
+MCUCXR_0126_1 droit droit qwen3.6:35b None
+MCUCXR_0140_1 gauche gauche qwen3.6:35b None
+MCUCXR_0141_1 gauche gauche qwen3.6:35b None
+MCUCXR_0142_1 gauche gauche qwen3.6:35b None
+MCUCXR_0144_1 gauche gauche qwen3.6:35b None
+MCUCXR_0194_1 droit droit qwen3.6:35b None
+MCUCXR_0195_1 gauche gauche qwen3.6:35b None
+MCUCXR_0213_1 droit droit qwen3.6:35b None
+MCUCXR_0218_1 droit droit qwen3.6:35b None
+MCUCXR_0223_1 gauche gauche qwen3.6:35b None
+MCUCXR_0228_1 gauche droit qwen3.6:35b None
+MCUCXR_0251_1 droit droit qwen3.6:35b None
+MCUCXR_0254_1 droit droit qwen3.6:35b None
+MCUCXR_0255_1 droit droit qwen3.6:35b None
+MCUCXR_0264_1 gauche gauche qwen3.6:35b None
+MCUCXR_0266_1 gauche gauche qwen3.6:35b None
+MCUCXR_0289_1 droit droit qwen3.6:35b None
+MCUCXR_0294_1 gauche gauche qwen3.6:35b None
+MCUCXR_0301_1 droit droit qwen3.6:35b None
+MCUCXR_0313_1 gauche gauche qwen3.6:35b None
+MCUCXR_0316_1 gauche gauche qwen3.6:35b None
+MCUCXR_0331_1 droit droit qwen3.6:35b None
+MCUCXR_0334_1 droit droit qwen3.6:35b None
+MCUCXR_0338_1 gauche gauche qwen3.6:35b None
+MCUCXR_0352_1 gauche droit qwen3.6:35b None
+MCUCXR_0362_1 droit droit qwen3.6:35b None
+MCUCXR_0367_1 droit droit qwen3.6:35b None
+MCUCXR_0369_1 droit droit qwen3.6:35b None
+MCUCXR_0372_1 droit droit qwen3.6:35b None
+MCUCXR_0375_1 droit droit qwen3.6:35b None
+MCUCXR_0383_1 gauche droit qwen3.6:35b None
+MCUCXR_0387_1 droit droit qwen3.6:35b None
+MCUCXR_0393_1 gauche gauche qwen3.6:35b None
+MCUCXR_0399_1 droit droit qwen3.6:35b None
+
+Atteintes unilatérales : 35 ; côté tranché par le lecteur : 35 ; correct : 32/35 ; inversé : 3

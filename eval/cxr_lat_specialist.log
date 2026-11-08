@@ -1,0 +1,37 @@
+MCUCXR_0104_1 gauche bilatéral ou indéterminé Infiltration 0.46
+MCUCXR_0126_1 droit droit Effusion 0.71
+MCUCXR_0140_1 gauche bilatéral ou indéterminé Infiltration 0.51
+MCUCXR_0141_1 gauche gauche Infiltration 0.33
+MCUCXR_0142_1 gauche gauche Lung Lesion 0.24
+MCUCXR_0144_1 gauche bilatéral ou indéterminé Infiltration 0.44
+MCUCXR_0194_1 droit bilatéral ou indéterminé Fibrosis 0.56
+MCUCXR_0195_1 gauche bilatéral ou indéterminé Infiltration 0.49
+MCUCXR_0213_1 droit droit Infiltration 0.73
+MCUCXR_0218_1 droit bilatéral ou indéterminé Infiltration 0.51
+MCUCXR_0223_1 gauche bilatéral ou indéterminé Infiltration 0.53
+MCUCXR_0228_1 gauche bilatéral ou indéterminé Lung Opacity 0.45
+MCUCXR_0251_1 droit gauche Lung Lesion 0.37
+MCUCXR_0254_1 droit gauche Infiltration 0.38
+MCUCXR_0255_1 droit bilatéral ou indéterminé Infiltration 0.41
+MCUCXR_0264_1 gauche gauche Infiltration 0.29
+MCUCXR_0266_1 gauche gauche Infiltration 0.3
+MCUCXR_0289_1 droit droit Infiltration 0.6
+MCUCXR_0294_1 gauche bilatéral ou indéterminé Atelectasis 0.42
+MCUCXR_0301_1 droit bilatéral ou indéterminé Atelectasis 0.52
+MCUCXR_0313_1 gauche gauche Infiltration 0.35
+MCUCXR_0316_1 gauche gauche Infiltration 0.36
+MCUCXR_0331_1 droit bilatéral ou indéterminé Infiltration 0.4
+MCUCXR_0334_1 droit droit Infiltration 0.64
+MCUCXR_0338_1 gauche bilatéral ou indéterminé Infiltration 0.44
+MCUCXR_0352_1 gauche gauche Infiltration 0.39
+MCUCXR_0362_1 droit droit Effusion 0.74
+MCUCXR_0367_1 droit droit Infiltration 0.63
+MCUCXR_0369_1 droit droit Infiltration 0.66
+MCUCXR_0372_1 droit droit Effusion 0.73
+MCUCXR_0375_1 droit droit Effusion 0.7
+MCUCXR_0383_1 gauche bilatéral ou indéterminé Infiltration 0.46
+MCUCXR_0387_1 droit bilatéral ou indéterminé Infiltration 0.43
+MCUCXR_0393_1 gauche gauche Infiltration 0.39
+MCUCXR_0399_1 droit droit Lung Opacity 0.69
+
+Atteintes unilatérales : 35 ; côté tranché par le lecteur : 20 ; correct : 18/20 ; inversé : 2

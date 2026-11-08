@@ -1,0 +1,32 @@
+FICTIFS  score de Hammond-Lefèvre         complet=-        nu(Hammond-Lefèvre)=INCONNU
+FICTIFS  score de Varnier-Halbrook        complet=INCONNU  nu(Varnier-Halbrook)=INCONNU
+FICTIFS  étude CARDIO-ZEN                 complet=INCONNU  nu(CARDIO-ZEN)=INCONNU
+FICTIFS  essai CLEARANCE                  complet=INCONNU  nu(CLEARANCE)=INCONNU
+FICTIFS  critères de Russell              complet=-        nu(Russell)=-
+FICTIFS  syndrome de Brovatrexil          complet=INCONNU  nu(Brovatrexil)=INCONNU
+FICTIFS  syndrome de Kessler-Moreau       complet=INCONNU  nu(Kessler-Moreau)=INCONNU
+FICTIFS  recommandations de Dunmore       complet=-        nu(Dunmore)=INCONNU
+FICTIFS  score de Pellegrin               complet=INCONNU  nu(Pellegrin)=-
+FICTIFS  étude HELIOS-7                   complet=INCONNU  nu(HELIOS-7)=INCONNU
+== FICTIFS : signalés 7/10 avec préfixe, 8/10 sans, 9/10 l'un ou l'autre
+
+RÉELS    syndrome de Kounis               complet=-        nu(Kounis)=-
+RÉELS    syndrome de Lemierre             complet=-        nu(Lemierre)=-
+RÉELS    règle PERC                       complet=INCONNU  nu(PERC)=-
+RÉELS    score de Wells                   complet=-        nu(Wells)=-
+RÉELS    score de Glasgow                 complet=-        nu(Glasgow)=-
+RÉELS    score CHA2DS2-VASc               complet=-        nu(CHA2DS2-VASc)=-
+RÉELS    étude ISIS-2                     complet=-        nu(ISIS-2)=-
+RÉELS    essai COMPASS                    complet=INCONNU  nu(COMPASS)=-
+RÉELS    score de Centor                  complet=-        nu(Centor)=-
+RÉELS    score de Mac Isaac               complet=INCONNU  nu(Mac Isaac)=INCONNU
+RÉELS    critères de Ranson               complet=-        nu(Ranson)=-
+RÉELS    score de Child-Pugh              complet=-        nu(Child-Pugh)=-
+RÉELS    triade de Cushing                complet=-        nu(Cushing)=-
+RÉELS    syndrome de Guillain-Barré       complet=-        nu(Guillain-Barré)=-
+RÉELS    score de Genève                  complet=-        nu(Genève)=INCONNU
+RÉELS    étude ARRIVE                     complet=-        nu(ARRIVE)=INCONNU
+RÉELS    syndrome de Brugada              complet=-        nu(Brugada)=-
+RÉELS    critères de Duke                 complet=-        nu(Duke)=-
+== RÉELS : signalés 3/18 avec préfixe, 3/18 sans, 5/18 l'un ou l'autre
+

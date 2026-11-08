@@ -1,0 +1,49 @@
+{
+ "enfant": {
+  "score_global": [
+   "Pneumonia",
+   "Consolidation",
+   "Lung Opacity",
+   "Infiltration"
+  ],
+  "seuil_global": 0.5795447826385498,
+  "seuils_anomalies": {
+   "Atelectasis": 0.504514393210411,
+   "Consolidation": 0.5086755871772766,
+   "Infiltration": 0.5617721378803253,
+   "Pneumothorax": 0.5192882776260376,
+   "Emphysema": 0.3567708283662793,
+   "Fibrosis": 0.5025917023420334,
+   "Effusion": 0.4135790795087812,
+   "Pleural_Thickening": 0.42817583978176094,
+   "Cardiomegaly": 0.5961655497550964,
+   "Nodule": 0.5104547083377838,
+   "Mass": 0.721173849701881,
+   "Lung Lesion": 0.14007798433303814,
+   "Fracture": 0.45432076603174204,
+   "Lung Opacity": 0.8065658181905746,
+   "Enlarged Cardiomediastinum": 0.5814199566841125
+  },
+  "n_calibration": 400
+ },
+ "adulte": {
+  "score_global": "toutes",
+  "seuil_global": 0.4379692077636719,
+  "seuils_anomalies": {
+   "Atelectasis": 0.4252217635512351,
+   "Consolidation": 0.26706825345754615,
+   "Infiltration": 0.48621037751436236,
+   "Pneumothorax": 0.4289890125393867,
+   "Emphysema": 0.5007230937480927,
+   "Fibrosis": 0.5171342611312866,
+   "Effusion": 0.11055771969258768,
+   "Pleural_Thickening": 0.4259015664458273,
+   "Cardiomegaly": 0.24486034661531417,
+   "Nodule": 0.5028258860111237,
+   "Mass": 0.502662917971611,
+   "Fracture": 0.3774958893656728,
+   "Lung Opacity": 0.42507249861955626
+  },
+  "n_calibration": 160
+ }
+}

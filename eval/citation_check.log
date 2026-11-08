@@ -1,0 +1,39 @@
+=== ui bpco
+  500 mg absent de [3] (HAS_2024_choix_duree p3)
+     « Posologie : Amoxicilline 500 mg, 3 fois par jour (toutes les 8 heures) [2], [3]. »
+=== docbench_round1\pro_full__doc.jsonl d01
+  3g absent de [1] (HAS_2024_choix_duree p1)
+     « *   **Fosfomycine-trométamol** : Prise unique (posologie standard généralement de 3g, à vérifier dans le RCP) [1]. »
+=== patient_full.jsonl sc03
+  900 mg absent de [1] (OMS_2022_AWaRe_antib p72)
+     « 3.  **Dose maximale journalière :** La dose totale ne doit pas dépasser **60 mg/kg/jour** (soit 900 mg pour un enfant de 15 kg) [1]. »
+=== pro_full.jsonl sc03
+  450 mg absent de [1] (OMS_2022_AWaRe_antib p72)
+     « *   **Option A (Toutes les 8 heures) :** Dose de **150 mg** par prise, soit **450 mg/jour** maximum [1]. »
+  800 mg absent de [3] (OMS_2022_AWaRe_antib p66)
+     « *   **Option B (Toutes les 6 heures) :** Dose de **200 mg** par prise, soit **800 mg/jour** maximum [3]. »
+=== round10_v152\patient_full.jsonl sc03
+  240 mg absent de [1] (OMS_2022_AWaRe_antib p304)
+     « *   **Forme du médicament** : Le paracétamol est souvent disponible en sirop (par exemple 120 mg/5 mL ou 240 mg/5 mL) ou en suppositoires [1]. Vous devez calculer le volume exact en fonction de la concentration indiquée sur l'emballage de votre pharmacien. Ne devinez pas le volume. »
+=== round13_v155\pro_full__doc.jsonl d06
+  90 mg absent de [1] (HAS_2024_choix_duree p2)
+     « Concernant la posologie selon l'OMS, elle est calculée sur **80–90 mg/kg/jour** (composant amoxicilline) et doit être administrée en **prises fractionnées toutes les 12 heures** pour les enfants pesant entre 10 et < 15 kg (et toutes les 8 heures pour ≥ 20 kg), et non en prise unique [2][3]. »
+=== round14_v156\patient_full.jsonl sc03
+  800 mg absent de [2] (OMS_2022_AWaRe_antib p72)
+     « 3.  **Fréquence** : On espace habituellement les prises de 6 heures, sans dépasser 4 prises par jour (soit un maximum de 800 mg par jour pour cet enfant selon cette règle) [2]. »
+=== round15_v157\patient_full.jsonl sc03
+  800 mg absent de [1] (OMS_2022_AWaRe_antib p304)
+     « *   Cette posologie standard correspond à 4 prises par jour (soit 800 mg au total), mais le maximum de sécurité dépend du poids global (généralement 60 mg/kg/jour) et non d'une limite fixe à 800 mg pour cette tranche [1]. »
+=== round7_kb\patient_full.jsonl sc03
+  800 mg absent de [1] (OMS_2022_AWaRe_antib p304)
+     « *   **Dose maximale journalière :** Ne pas dépasser **4 prises** dans une journée (soit un maximum de **800 mg** pour cet enfant) [1]. »
+=== round7_kb\pro_full__doc.jsonl d16
+  40 mg absent de [1] (HAS_2024_choix_duree p1)
+     « *   **Connaissance générale (hors base documentaire) :** Selon les recommandations cliniques standards (et non citées explicitement avec un chiffre dans l'extrait [1]), la prophylaxie au triméthoprime se fait généralement par des comprimés de **40 mg ou 80 mg** une fois par jour. Il est crucial de n »
+  80 mg absent de [1] (HAS_2024_choix_duree p1)
+     « *   **Connaissance générale (hors base documentaire) :** Selon les recommandations cliniques standards (et non citées explicitement avec un chiffre dans l'extrait [1]), la prophylaxie au triméthoprime se fait généralement par des comprimés de **40 mg ou 80 mg** une fois par jour. Il est crucial de n »
+=== round8_partial\pro_full.jsonl sc03
+  800 mg absent de [1] (OMS_2022_AWaRe_antib p304)
+     « *   La dose maximale journalière correspond à 4 doses de 200 mg, soit **800 mg/jour** pour cette bande de poids [1]. »
+
+Réponses avec sources : 458 ; avec au moins une alerte : 11
