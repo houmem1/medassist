@@ -2,7 +2,7 @@
 
 Parti du tutoriel freeCodeCamp *Build Your Own Healthcare AI Assistant with MedGemma, Ollama and Open WebUI*, puis renforcé pour la fiabilité. Machine : RTX 4070 Laptop 8 Go, 32 Go RAM, Windows 11.
 
-Code : https://github.com/houmem1/medassist (licence MIT). Les documents HAS et OMS ne sont pas redistribués : chacun les télécharge depuis les sites officiels (section « Base documentaire »). Pour l'installer chez vous : section « Installation sur un nouveau poste ».
+Dépôt public : https://github.com/houmem1/medassist, vitrine seulement (présentation, captures, vidéo, mesures) ; le code source n'est pas publié. Les documents HAS et OMS ne sont pas redistribués : chacun les télécharge depuis les sites officiels (section « Base documentaire »).
 
 ![MedAssist Pro : réponse sourcée HAS et OMS, avec renvoi aux pages des PDF](docs/capture_reponse.png)
 
@@ -264,7 +264,7 @@ Testé sur un seul PC (Windows 11, RTX 4070 Laptop 8 Go, 32 Go de RAM) : sur un 
    ollama pull medgemma:4b
    ollama pull bge-m3
    ```
-2. **Le code** : `git clone https://github.com/houmem1/medassist` (ou l'archive ZIP du dépôt), puis placez-vous dans ce dossier.
+2. **Le code** : copiez ce dossier sur le nouveau poste (le dépôt GitHub ne contient pas le code), puis placez-vous dedans.
 3. **Open WebUI** (Python 3.11), dans le dossier d'installation, par défaut `%USERPROFILE%\open-webui` (voir `MEDASSIST_ROOT` plus bas) :
    ```bash
    py -3.11 -m venv %USERPROFILE%\open-webui\venv
