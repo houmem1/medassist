@@ -4,9 +4,11 @@ Installe aussi l'habillage : logo et icônes (openwebui/static, générés par m
 fiches des deux modèles (avatar, description, suggestions), suggestions de départ et bandeau d'information.
 
 À lancer avec le Python d'Open WebUI, serveur ARRÊTÉ (la configuration est lue au démarrage) :
-  %USERPROFILE%\\open-webui\\venv\\Scripts\\python.exe openwebui\\install.py [--keep-ollama-models]
+  %USERPROFILE%\\open-webui\\venv\\Scripts\\python.exe openwebui\\install.py [--keep-ollama-models] [--profile complet|bureautique]
 Dossier d'installation : variable MEDASSIST_ROOT (défaut %USERPROFILE%\\open-webui) ; DATA_DIR = ce dossier\\data.
 
+--profile : force le profil matériel (par défaut, choisi d'après la RAM : 32 Go -> complet, qwen3.6:35b ;
+sinon bureautique, qwen3.5:9b, contexte 8192). Le choix est écrit dans <dossier d'installation>\\medassist.json.
 --keep-ollama-models : garde les modèles Ollama bruts visibles dans la liste (par défaut, seuls
 MedAssist Pro et MedAssist Patient apparaissent ; réactivable dans Admin > Paramètres > Connexions).
 """
@@ -69,6 +71,74 @@ MEDASSIST_ROOT = Path(os.environ.get("MEDASSIST_ROOT", Path.home() / "open-webui
 DATA_DIR = Path(os.environ.setdefault("DATA_DIR", str(MEDASSIST_ROOT / "data")))
 ROOT = DATA_DIR.parent
 PORT = 8080
+PROFILE_FILE = ROOT / "medassist.json"  # profil retenu, relu par start-medassist.ps1 et doctor.py
+
+# Profils matériels : le modèle principal dépend de la machine. install.py le choisit d'après la RAM et la carte
+# graphique (--profile complet|bureautique pour forcer). Les scores sont ceux des bancs du README.
+PROFILES = {
+    "complet": dict(model="qwen3.6:35b", num_ctx=16384, besoin="32 Go de RAM ; carte graphique de 8 Go conseillée"),
+    "bureautique": dict(model="qwen3.5:9b", num_ctx=8192, besoin="16 Go de RAM, sans carte graphique"),
+}
+
+
+def detect_hardware():
+    """RAM et mémoire vidéo (NVIDIA) en Go ; 0 si pas de carte ou nvidia-smi absent. Ne sort pas du PC."""
+    import ctypes
+    import platform
+    import shutil
+    import subprocess
+    ram = 0.0
+    if platform.system() == "Windows":
+        class MemoryStatus(ctypes.Structure):
+            _fields_ = [("dwLength", ctypes.c_ulong), ("dwMemoryLoad", ctypes.c_ulong),
+                        ("ullTotalPhys", ctypes.c_ulonglong), ("ullAvailPhys", ctypes.c_ulonglong),
+                        ("ullTotalPageFile", ctypes.c_ulonglong), ("ullAvailPageFile", ctypes.c_ulonglong),
+                        ("ullTotalVirtual", ctypes.c_ulonglong), ("ullAvailVirtual", ctypes.c_ulonglong),
+                        ("ullAvailExtendedVirtual", ctypes.c_ulonglong)]
+        status = MemoryStatus()
+        status.dwLength = ctypes.sizeof(MemoryStatus)
+        if ctypes.windll.kernel32.GlobalMemoryStatusEx(ctypes.byref(status)):
+            ram = status.ullTotalPhys / 1024 ** 3
+    else:
+        try:
+            ram = os.sysconf("SC_PAGE_SIZE") * os.sysconf("SC_PHYS_PAGES") / 1024 ** 3
+        except (ValueError, OSError, AttributeError):
+            pass
+    vram, gpu = 0.0, ""
+    if shutil.which("nvidia-smi"):
+        try:
+            out = subprocess.run(["nvidia-smi", "--query-gpu=name,memory.total", "--format=csv,noheader,nounits"],
+                                 capture_output=True, text=True, timeout=10).stdout
+            rows = [line.split(",") for line in out.strip().splitlines() if "," in line]
+            if rows:
+                gpu, vram = rows[0][0].strip(), max(float(r[1]) for r in rows) / 1024
+        except (OSError, ValueError, subprocess.SubprocessError):
+            pass
+    return {"ram_gb": round(ram, 1), "vram_gb": round(vram, 1), "gpu": gpu}
+
+
+def choose_profile(ram_gb, vram_gb=0.0):
+    """Règle simple et explicable : le modèle de 35 milliards (23 Go) exige 32 Go de RAM ; en dessous, le 9b."""
+    return "complet" if ram_gb >= 28 else "bureautique"
+
+
+async def set_profile(name, hardware):
+    """Fixe modèle et contexte dans les réglages (valves) de la fonction, sans toucher aux autres réglages,
+    et écrit medassist.json pour start-medassist.ps1 et doctor.py."""
+    from open_webui.models.functions import Functions
+    prof = PROFILES[name]
+    valves = (await Functions.get_function_valves_by_id(FUNCTION_ID)) or {}
+    valves.update({"MODEL": prof["model"], "NUM_CTX": prof["num_ctx"]})
+    await Functions.update_function_valves_by_id(FUNCTION_ID, valves)
+    PROFILE_FILE.write_text(json.dumps({"profile": name, "model": prof["model"], "num_ctx": prof["num_ctx"],
+                                        **hardware, "updated": time.strftime("%Y-%m-%d %H:%M")},
+                                       indent=1, ensure_ascii=False), encoding="utf-8")
+    print(f"Profil {name} : modèle {prof['model']}, contexte {prof['num_ctx']} "
+          f"(RAM {hardware['ram_gb']} Go, carte graphique {hardware['gpu'] or 'aucune'} {hardware['vram_gb']} Go)")
+    if name == "bureautique" and hardware["ram_gb"] and hardware["ram_gb"] < 14:
+        print("ATTENTION : moins de 16 Go de RAM. Le profil bureautique n'a pas été mesuré en dessous de 16 Go ; "
+              "fermez les autres applications et attendez-vous à des réponses très lentes.")
+    print(f"Si le modèle manque : ollama pull {prof['model']}   (--profile complet|bureautique pour changer)")
 
 # Open WebUI exige sa clé secrète : celle de start-medassist.ps1 (ROOT), sinon celle d'un ancien lancement
 if not os.environ.get("WEBUI_SECRET_KEY"):
@@ -217,6 +287,13 @@ if __name__ == "__main__":
         sys.exit(f"Open WebUI écoute sur le port {PORT} : arrêtez-le (Ctrl+C dans sa fenêtre) avant d'installer, "
                  "puis relancez start-medassist.ps1. (--force pour passer outre.)")
     asyncio.run(install_function())
+    hardware = detect_hardware()
+    forced = next((a.split("=", 1)[1] for a in sys.argv if a.startswith("--profile=")), None)
+    if "--profile" in sys.argv:
+        forced = sys.argv[sys.argv.index("--profile") + 1]
+    if forced and forced not in PROFILES:
+        sys.exit(f"Profil inconnu : {forced} (choix : {', '.join(PROFILES)})")
+    asyncio.run(set_profile(forced or choose_profile(hardware["ram_gb"], hardware["vram_gb"]), hardware))
     asyncio.run(install_models())
     set_config("--keep-ollama-models" in sys.argv)
     copy_static()

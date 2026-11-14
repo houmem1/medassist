@@ -81,6 +81,7 @@ La correction est automatique, par mots-clés attendus ou interdits.
 | **v1.5.3** : sonde sans préfixe, clinique et pièges relancés | **Pro 54/54, Patient 54/54** | 34 s / 30 s |
 | v1.5.7 (et v1.5.8, installée, qui n'ajoute qu'un encadré) : recherche et index revus ; seules les 4 questions qui reçoivent des extraits changent de chemin, relancées | 4/4 dans les deux profils (les 50 autres suivent le chemin de la v1.5.3) | 72 s / 52 s |
 | **v1.6.0** (audit) : banc complet relancé, 54 questions dans les deux profils | **Pro 53/54 (Cushing), Patient 54/54** | 45 s / 37 s (moyennes) |
+| v1.7.0, **profil bureautique** (`qwen3.5:9b`, contexte 8 192, voir « Mode bureautique ») | Pro 53/54, Patient 53/54 | 49 s / 39 s |
 
 \* première version du banc, à 47 questions.
 
@@ -157,6 +158,7 @@ Le banc [eval/docbench.py](eval/docbench.py) compte 21 questions dont la répons
 | v1.5.7, ancien index | 20/21 | 20/21 |
 | v1.5.7, index en mise en page (et v1.5.8, installée) | 21/21 | 21/21 |
 | **v1.6.0** (audit, banc complet) | **21/21** | **20/21** (triméthoprime, voir ci-dessous) |
+| v1.7.0, profil bureautique (`qwen3.5:9b`) | 20/21 | 18/21 |
 
 Erreurs du pipeline sans base, toutes corrigées par la base :
 - tuberculose non sévère de l'enfant traitée 6 mois au lieu de 4 ;
@@ -256,11 +258,27 @@ Le spécialiste donnera alors un verdict adulte, croisé avec MedGemma. En simul
 
 ## Installation sur un nouveau poste
 
-Testé sur un seul PC (Windows 11, RTX 4070 Laptop 8 Go, 32 Go de RAM) : sur un autre poste, attendez-vous à quelques ajustements, et ouvrez une *issue* si une étape bloque. Comptez environ 30 Go de disque pour les modèles. Une carte graphique de 8 Go ou plus est recommandée pour `qwen3.6:35b` ; sans elle, il tourne en RAM, beaucoup plus lentement. Tout ce qui suit est fait une fois ; ensuite, plus aucune connexion n'est nécessaire.
+Testé sur un seul PC (Windows 11, RTX 4070 Laptop 8 Go, 32 Go de RAM) : sur un autre poste, attendez-vous à quelques ajustements. Tout ce qui suit est fait une fois ; ensuite, plus aucune connexion n'est nécessaire.
 
-1. **Ollama** : installez-le depuis ollama.com, puis téléchargez les trois modèles (~28 Go) :
+**Deux profils matériels**, choisis automatiquement par `install.py` d'après la RAM (section « Mode bureautique » pour les mesures) :
+
+| Profil | Machine | Modèle principal | Disque |
+|---|---|---|---|
+| **complet** | 32 Go de RAM ; carte graphique de 8 Go conseillée | `qwen3.6:35b` (23 Go), contexte 16 384 | ~30 Go |
+| **bureautique** | 16 Go de RAM, sans carte graphique | `qwen3.5:9b` (6,6 Go), contexte 8 192 | ~12 Go |
+
+En dessous de 16 Go, rien n'a été mesuré : le profil bureautique se lance, mais très lentement, et seulement si les autres applications sont fermées.
+
+1. **Ollama** : installez-le depuis ollama.com, puis téléchargez le modèle principal de votre profil et les deux modèles communs :
    ```bash
    ollama pull qwen3.6:35b
+   ```
+   ou, pour le profil bureautique :
+   ```bash
+   ollama pull qwen3.5:9b
+   ```
+   puis :
+   ```bash
    ollama pull medgemma:4b
    ollama pull bge-m3
    ```
@@ -288,7 +306,7 @@ Testé sur un seul PC (Windows 11, RTX 4070 Laptop 8 Go, 32 Go de RAM) : sur un 
    ```bash
    %USERPROFILE%\open-webui\venv\Scripts\python.exe openwebui\install.py
    ```
-   Le script pose la fonction, les deux profils, l'habillage, et copie dans le dossier d'installation le lecteur radio, `start-medassist.ps1`, `doctor.py` et `knowledge\ingest.py`. Le dossier du code peut ensuite être déplacé ou supprimé.
+   Le script détecte la RAM et la carte graphique, choisit le profil matériel (affiché ; `--profile complet` ou `--profile bureautique` pour forcer), pose la fonction, les deux profils d'usage, l'habillage, et copie dans le dossier d'installation le lecteur radio, `start-medassist.ps1`, `doctor.py` et `knowledge\ingest.py`. Le dossier du code peut ensuite être déplacé ou supprimé.
 7. **Base documentaire** : déposez vos PDF (recommandations HAS, OMS, protocoles de votre service) dans `%USERPROFILE%\open-webui\knowledge\docs`, puis, Ollama lancé :
    ```bash
    %USERPROFILE%\open-webui\venv\Scripts\python.exe %USERPROFILE%\open-webui\knowledge\ingest.py
@@ -340,6 +358,48 @@ Les réglages (modèle, relecture, contrôle des noms, affichage du détail des 
    ```bash
    C:\Users\hprof\open-webui\venv\Scripts\python.exe -m unittest discover -s tests
    ```
+
+## Mode bureautique (v1.7)
+
+Un PC de bureau classique a 16 Go de RAM et pas de carte graphique dédiée. Le modèle de 35 milliards de paramètres (23 Go) n'y tient pas. Depuis la v1.7, `install.py` mesure la RAM et la carte graphique et choisit un **profil matériel** ; le pipeline, lui, ne change pas : mêmes contrôles, même base documentaire, même relecture.
+
+| Profil | Machine | Modèle principal | Contexte |
+|---|---|---|---|
+| **complet** | 32 Go de RAM, carte graphique de 8 Go conseillée | `qwen3.6:35b` | 16 384 |
+| **bureautique** | 16 Go de RAM, sans carte graphique | `qwen3.5:9b` (6,6 Go) | 8 192 |
+
+Le choix est écrit dans les réglages de la fonction (*Admin > Fonctions > MedAssist > Valves*, modifiable) et dans `medassist.json` du dossier d'installation, que `start-medassist.ps1` et `doctor.py` relisent. `install.py --profile complet` ou `--profile bureautique` force le choix. Seule la règle « 32 Go ou plus : complet, sinon bureautique » est appliquée : une machine à 24 Go reçoit le profil bureautique.
+
+**Ce qui a été mesuré** (même bancs que la section « Fiabilité mesurée », même pipeline, modèle `qwen3.5:9b`, contexte 8 192) :
+
+| Banc | Complet (`qwen3.6:35b`, v1.6.0) | Bureautique (`qwen3.5:9b`) |
+|---|---|---|
+| 54 questions générales, Pro | 53/54 | **53/54** |
+| 54 questions générales, Patient | 54/54 | **53/54** |
+| 21 questions documentaires, Pro | 21/21 | **20/21** |
+| 21 questions documentaires, Patient | 20/21 | **18/21** |
+| Temps moyen par réponse, banc général, carte graphique de 8 Go | 45 s / 37 s | 49 s / 39 s (*) |
+| Temps moyen par réponse, banc documentaire | 62 s / 40 s | 110 s / 80 s (*) |
+
+(*) Mesuré avec 26 des 32 couches du modèle sur la carte graphique, le reste sur le processeur : la carte était partagée avec d'autres applications pendant le banc. La vitesse avec la carte entière n'a pas été mesurée ; sur processeur seul, voir ci-dessous.
+
+**Échecs du profil bureautique.** Banc général : la triade de Cushing (cl09) dans les deux profils ; le 35b la rate aussi en Pro. Banc documentaire : l'urétrite non compliquée (d11) dans les deux profils. L'extrait HAS retenu (page de synthèse dense) contient bien « ceftriaxone + doxycycline 7 jours », que le 35b y lit ; le 9b, en Pro, a appliqué à l'urétrite la ligne voisine des pyélonéphrites (fluoroquinolone 10 jours : **réponse fausse, présentée avec une citation**) et, en Patient, a déclaré l'extrait hors sujet puis répondu de mémoire (doxycycline ou azithromycine, sans ceftriaxone). En Patient encore : l'otite moyenne aiguë modérée (d05 : fond juste, « antibiotique non systématique, réévaluation à 48-72 h », mais sans la formule attendue par le correcteur automatique) et la tuberculose de l'enfant (t01 : 4 mois et la trithérapie, sans la notation 2HRZ du schéma). Le vrai décrochage est d11 en Pro : sur une page de tableau dense, le 9b lit moins bien que le 35b et peut citer un extrait à contresens. C'est la limite à retenir de ce profil.
+
+**Vitesse sur processeur seul.** Mesurée sur ce PC en interdisant la carte graphique à Ollama et en limitant le calcul à 6 fils, pour approcher un portable de bureau ([eval/cpu_latency.py](eval/cpu_latency.py)). Pipeline complet, profil Pro :
+
+| Question | `qwen3.5:9b` | `qwen2.5:7b` (génération précédente, pour comparaison) |
+|---|---|---|
+| Classe du losartan (premier appel, modèle à charger) | 1,0 min | 0,9 min |
+| Seuil d'HbA1c (8 extraits documentaires à trier, tous écartés) | 2,2 min | 2,9 min |
+| Posologie d'un médicament fictif (sonde des noms) | 0,9 min | 0,7 min |
+
+Ce qui rend ces temps tenables : Ollama garde en cache le prompt système d'un appel à l'autre. Sa lecture coûte 16 s au premier appel sur processeur, 0,5 s ensuite. Le 7b de génération précédente est aussi rapide, mais pas fiable : sur ces trois questions, il a donné une dose fausse de rivaroxaban après avoir refusé le médicament fictif, et gardé des extraits hors sujet pour l'HbA1c. D'où le choix du 9b.
+
+**Limites du profil bureautique :**
+- Les temps ci-dessus sont ceux d'un processeur portable récent à 6 fils ; un processeur plus ancien ira plus lentement, et la lecture d'une radiographie (MedGemma 4B puis rédaction) prendra plusieurs minutes.
+- En dessous de 16 Go de RAM, rien n'a été mesuré. Le 9b (6,6 Go), le modèle de vision (3,3 Go) et l'index documentaire se partagent la mémoire avec Windows et Open WebUI : fermez les autres applications.
+- Le 9b glisse plus volontiers un nom inexistant dans une suggestion secondaire (vu : « ziltoprofène » parmi les confusions possibles d'un médicament fictif). La limite « noms cités en passant » de la section « Fiabilité mesurée » s'applique davantage.
+- Les scores sont ceux d'un seul passage par banc ; deux passages identiques peuvent différer d'une question.
 
 ## Habillage de l'interface
 
@@ -411,7 +471,7 @@ Relecture complète du code (pipeline, lecteur radio, indexation, installation, 
 | [docs/](docs/) | captures de l'interface et vidéo de démonstration (40 s) |
 | [openwebui/make_branding.py](openwebui/make_branding.py) | génère le logo et les icônes MedAssist dans [openwebui/static](openwebui/static) (avec la feuille de style `custom.css`) |
 | [tests/test_units.py](tests/test_units.py) | 36 tests unitaires hors ligne du pipeline (tri, âge, sonde, sources, doses, historique, erreurs) |
-| [eval/](eval/) | bancs d'essai (général : `medbench.py` ; base documentaire : `docbench.py`), tri des extraits (`kb_relevance.py`), contrôle des citations (`citation_check.py`), configurations comparées, journaux et résultats |
+| [eval/](eval/) | bancs d'essai (général : `medbench.py` ; base documentaire : `docbench.py`), tri des extraits (`kb_relevance.py`), contrôle des citations (`citation_check.py`), latence sur processeur seul (`cpu_latency.py`), configurations comparées, journaux et résultats |
 | [test_medassist.py](test_medassist.py), [make_test_image.py](make_test_image.py) | tests rapides du tutoriel et image synthétique |
 
 ## Dépannage

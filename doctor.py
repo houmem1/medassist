@@ -16,7 +16,13 @@ from pathlib import Path
 
 ROOT = Path(os.environ.get("MEDASSIST_ROOT", Path.home() / "open-webui"))  # dossier d'installation
 OLLAMA = "http://localhost:11434"
-MODELS = {"qwen3.6:35b": "rédaction et relecture", "medgemma:4b": "vision médicale", "bge-m3": "base documentaire"}
+MAIN_MODEL, PROFILE = "qwen3.6:35b", "complet (par défaut)"
+try:  # profil matériel choisi par openwebui\install.py
+    _prof = json.loads((ROOT / "medassist.json").read_text(encoding="utf-8"))
+    MAIN_MODEL, PROFILE = _prof["model"], f"{_prof['profile']} (RAM {_prof.get('ram_gb')} Go, carte {_prof.get('vram_gb')} Go)"
+except (OSError, ValueError, KeyError):
+    pass
+MODELS = {MAIN_MODEL: "rédaction et relecture", "medgemma:4b": "vision médicale", "bge-m3": "base documentaire"}
 PIPE_SOURCE = Path(__file__).resolve().parent / "openwebui" / "medassist_pipe.py"
 OK, KO, WARN = "✅", "❌", "⚠️ "
 problems = 0
@@ -46,6 +52,7 @@ try:
     tags = get(f"{OLLAMA}/api/tags")
     installed = {m["name"] for m in tags["models"]}
     line(True, "Ollama répond", OLLAMA)
+    line(True, f"Profil matériel {PROFILE}", f"modèle principal {MAIN_MODEL}")
     for model, role in MODELS.items():
         present = model in installed or f"{model}:latest" in installed
         line(present, f"Modèle {model} ({role})", "" if present else f"ollama pull {model}")

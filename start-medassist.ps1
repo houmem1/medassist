@@ -5,7 +5,12 @@ $ErrorActionPreference = "Stop"
 $Root = if ($env:MEDASSIST_ROOT) { $env:MEDASSIST_ROOT } else { "$env:USERPROFILE\open-webui" }
 $Port = 8080
 $Ollama = "http://localhost:11434"
-$RequiredModels = @("qwen3.6:35b", "medgemma:4b", "bge-m3")
+# Modèle principal selon le profil matériel choisi par install.py (medassist.json) ; complet par défaut
+$MainModel = "qwen3.6:35b"
+if (Test-Path "$Root\medassist.json") {
+    try { $MainModel = (Get-Content "$Root\medassist.json" -Raw | ConvertFrom-Json).model } catch { }
+}
+$RequiredModels = @($MainModel, "medgemma:4b", "bge-m3")
 
 # 1. Ollama doit répondre sur le port 11434 (attente jusqu'à 30 s après son lancement)
 function Test-Ollama { try { Invoke-WebRequest -UseBasicParsing "$Ollama/api/tags" -TimeoutSec 3 | Out-Null; $true } catch { $false } }

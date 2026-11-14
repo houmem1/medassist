@@ -306,6 +306,32 @@ class ReviewFindings(unittest.TestCase):
         self.assertGreater(len(np.unique(values)), 100)
 
 
+class HardwareProfile(unittest.TestCase):
+    """install.py choisit le modèle d'après la machine : règle à garder lisible et stable."""
+
+    def setUp(self):
+        spec = importlib.util.spec_from_file_location(
+            "install", Path(__file__).resolve().parent.parent / "openwebui" / "install.py")
+        self.inst = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(self.inst)
+
+    def test_rule(self):
+        self.assertEqual(self.inst.choose_profile(31.7, 8), "complet")
+        self.assertEqual(self.inst.choose_profile(64, 0), "complet")
+        self.assertEqual(self.inst.choose_profile(15.8, 0), "bureautique")
+        self.assertEqual(self.inst.choose_profile(7.8, 0), "bureautique")
+
+    def test_profiles_consistent(self):
+        for name, prof in self.inst.PROFILES.items():
+            self.assertIn(":", prof["model"], name)
+            self.assertGreaterEqual(prof["num_ctx"], 8192)
+
+    def test_detect_hardware_runs(self):
+        hw = self.inst.detect_hardware()
+        self.assertGreater(hw["ram_gb"], 1)
+        self.assertGreaterEqual(hw["vram_gb"], 0)
+
+
 class PipeWrapper(unittest.TestCase):
     def test_empty_question(self):
         import asyncio

@@ -1,7 +1,7 @@
 """
 title: MedAssist (Pro + Patient) — réponses vérifiées
 author: MedAssist
-version: 1.6.1
+version: 1.7.0
 description: Assistant santé local. Tri de sécurité déterministe, contrôle des noms inconnus, base documentaire locale citée et contrôle des citations, double lecture des radiographies thoraciques (lecteur spécialisé + MedGemma), relecture critique et correction, sans connexion externe.
 """
 
