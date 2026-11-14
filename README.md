@@ -2,7 +2,7 @@
 
 Parti du tutoriel freeCodeCamp *Build Your Own Healthcare AI Assistant with MedGemma, Ollama and Open WebUI*, puis renforcé pour la fiabilité. Machine : RTX 4070 Laptop 8 Go, 32 Go RAM, Windows 11.
 
-Dépôt public : https://github.com/houmem1/medassist, vitrine seulement (présentation, captures, vidéo, mesures) ; le code source n'est pas publié. Les documents HAS et OMS ne sont pas redistribués : chacun les télécharge depuis les sites officiels (section « Base documentaire »).
+Code : https://github.com/houmem1/medassist (licence MIT). Le dépôt contient tout ce qu'il faut pour l'installer, en profil complet (32 Go de RAM) ou bureautique (16 Go, sans carte graphique) : section « Installation sur un nouveau poste ». Seuls les modèles Ollama (téléchargés par `ollama pull`) et les documents HAS et OMS, non redistribués, viennent de l'extérieur : chacun télécharge ces derniers depuis les sites officiels (section « Base documentaire »).
 
 ![MedAssist Pro : réponse sourcée HAS et OMS, avec renvoi aux pages des PDF](docs/capture_reponse.png)
 
@@ -107,7 +107,7 @@ Les résultats détaillés, réponse par réponse, sont dans `eval/results/*.jso
 
 Quand la question porte sur un sujet couvert, MedAssist s'appuie sur des recommandations officielles en PDF, indexées sur ce PC. La recherche et la rédaction restent 100 % locales : les documents ont été téléchargés une seule fois.
 
-**Documents installés** (thème infectiologie / antibiotiques), dans `C:\Users\hprof\open-webui\knowledge\docs` :
+**Documents installés** (thème infectiologie / antibiotiques), dans `%USERPROFILE%\open-webui\knowledge\docs` :
 
 | Document | Source | Pages |
 |---|---|---|
@@ -181,11 +181,11 @@ Non-régression sur le banc général de 54 questions, presque toutes hors du th
 
 ### Ajouter vos documents
 
-1. Copiez vos PDF dans `C:\Users\hprof\open-webui\knowledge\docs`. Le nom du fichier sert de titre de source : préférez un nom lisible, par exemple `HAS_2024_angine.pdf`.
+1. Copiez vos PDF dans `%USERPROFILE%\open-webui\knowledge\docs`. Le nom du fichier sert de titre de source : préférez un nom lisible, par exemple `HAS_2024_angine.pdf`.
 2. Relancez l'indexation (environ 1 min pour 1 000 pages, Ollama démarré) :
 
 ```bash
-C:/Users/hprof/open-webui/venv/Scripts/python.exe C:/Users/hprof/open-webui/knowledge/ingest.py
+%USERPROFILE%/open-webui/venv/Scripts/python.exe %USERPROFILE%/open-webui/knowledge/ingest.py
 ```
 
 MedAssist relit l'index à la question suivante, sans redémarrage. Pour retirer un document, supprimez le PDF et relancez l'indexation.
@@ -251,7 +251,7 @@ Ce qu'il faut savoir avant de s'y fier :
 Il faut 50 à 100 radiographies thoraciques de face d'adultes, **normales** (validées par un radiologue) et **anonymisées**, en PNG ou JPEG. Arrêtez MedAssist, puis lancez :
 
 ```bash
-C:\Users\hprof\open-webui\cxr-venv\Scripts\python.exe C:\Users\hprof\open-webui\radiology\calibrate_local.py C:\chemin\vers\radios_normales
+%USERPROFILE%\open-webui\cxr-venv\Scripts\python.exe %USERPROFILE%\open-webui\radiology\calibrate_local.py C:\chemin\vers\radios_normales
 ```
 
 Le spécialiste donnera alors un verdict adulte, croisé avec MedGemma. En simulation, il atteint une spécificité de 92 % pour une sensibilité de 67 %. Vérifiez-le sur quelques cas pathologiques connus de votre service avant de vous y fier.
@@ -282,7 +282,7 @@ En dessous de 16 Go, rien n'a été mesuré : le profil bureautique se lance, ma
    ollama pull medgemma:4b
    ollama pull bge-m3
    ```
-2. **Le code** : copiez ce dossier sur le nouveau poste (le dépôt GitHub ne contient pas le code), puis placez-vous dedans.
+2. **Le code** : `git clone https://github.com/houmem1/medassist` (ou *Code > Download ZIP* sur GitHub), puis placez-vous dans ce dossier.
 3. **Open WebUI** (Python 3.11), dans le dossier d'installation, par défaut `%USERPROFILE%\open-webui` (voir `MEDASSIST_ROOT` plus bas) :
    ```bash
    py -3.11 -m venv %USERPROFILE%\open-webui\venv
@@ -321,30 +321,30 @@ Hors Windows : `start-medassist.ps1` est le seul élément propre à Windows ; l
 
 ## Installation et utilisation
 
-Les chemins ci-dessous sont ceux de ce PC (`C:\Users\hprof\open-webui`). Sur un autre poste, le dossier d'installation est par défaut `%USERPROFILE%\open-webui` ; pour un autre emplacement, définissez la variable d'environnement `MEDASSIST_ROOT` avant de lancer `install.py`, `start-medassist.ps1` ou `doctor.py` (l'index documentaire, le lecteur radio et les données d'Open WebUI y sont cherchés).
+Les chemins ci-dessous utilisent le dossier d'installation par défaut, `%USERPROFILE%\open-webui` (dans PowerShell : `$env:USERPROFILE\open-webui`) ; pour un autre emplacement, définissez la variable d'environnement `MEDASSIST_ROOT` avant de lancer `install.py`, `start-medassist.ps1` ou `doctor.py` (l'index documentaire, le lecteur radio et les données d'Open WebUI y sont cherchés).
 
 Ce qui est en place :
 
 | Élément | Emplacement |
 |---|---|
 | Ollama 0.40 + `qwen3.6:35b` (et `bge-m3` pour les documents) | service sur `http://localhost:11434` |
-| Open WebUI 0.13 (pip, Python 3.11) | `C:\Users\hprof\open-webui\venv` |
-| Données (comptes, conversations) | `C:\Users\hprof\open-webui\data` |
+| Open WebUI 0.13 (pip, Python 3.11) | `%USERPROFILE%\open-webui\venv` |
+| Données (comptes, conversations) | `%USERPROFILE%\open-webui\data` |
 | `medgemma:4b` (seconde lecture des radios) | Ollama |
-| Lecteur spécialisé (torch CPU + TorchXRayVision, environnement séparé) | `C:\Users\hprof\open-webui\cxr-venv` et `...\radiology` ; poids dans `C:\Users\hprof\.torchxrayvision` |
-| Script de lancement (copie permanente) | `C:\Users\hprof\open-webui\start-medassist.ps1` |
-| Base documentaire : PDF, index, outil d'indexation | `C:\Users\hprof\open-webui\knowledge` (`docs`, `index`, `ingest.py`) |
-| Radios de test téléchargées (~1,7 Go, supprimables) | `C:\Users\hprof\open-webui\cxr-data` |
+| Lecteur spécialisé (torch CPU + TorchXRayVision, environnement séparé) | `%USERPROFILE%\open-webui\cxr-venv` et `...\radiology` ; poids dans `%USERPROFILE%\.torchxrayvision` |
+| Script de lancement (copie permanente) | `%USERPROFILE%\open-webui\start-medassist.ps1` |
+| Base documentaire : PDF, index, outil d'indexation | `%USERPROFILE%\open-webui\knowledge` (`docs`, `index`, `ingest.py`) |
+| Radios de test téléchargées (~1,7 Go, supprimables) | `%USERPROFILE%\open-webui\cxr-data` |
 
 1. **Lancer** (Ollama, lecteur radio et Open WebUI) :
    ```bash
-   powershell -ExecutionPolicy Bypass -File C:\Users\hprof\open-webui\start-medassist.ps1
+   powershell -ExecutionPolicy Bypass -File %USERPROFILE%\open-webui\start-medassist.ps1
    ```
    Puis ouvrir http://localhost:8080.
 2. **Choisir le profil** en haut de la conversation : MedAssist Pro ou MedAssist Patient. Le bouton **+** permet de joindre une radiographie (PNG ou JPEG ; convertir les DICOM avant).
 3. **Après une modification de [openwebui/medassist_pipe.py](openwebui/medassist_pipe.py)** : arrêter le serveur, puis lancer la commande ci-dessous, puis relancer le serveur. Le script refuse de s'exécuter si Open WebUI tourne encore (la configuration est lue au démarrage). Il pose aussi l'habillage de l'interface (section ci-dessous).
    ```bash
-   C:\Users\hprof\open-webui\venv\Scripts\python.exe openwebui\install.py
+   %USERPROFILE%\open-webui\venv\Scripts\python.exe openwebui\install.py
    ```
    Le script installe ou met à jour la fonction, choisit MedAssist Pro par défaut et masque les modèles Ollama bruts. Ajouter `--keep-ollama-models` pour les garder visibles.
 
@@ -352,11 +352,11 @@ Les réglages (modèle, relecture, contrôle des noms, affichage du détail des 
 
 4. **Contrôler l'installation** (Ollama, modèles, index, lecteur radio, version installée) :
    ```bash
-   C:\Users\hprof\open-webui\venv\Scripts\python.exe C:\Users\hprof\open-webui\doctor.py
+   %USERPROFILE%\open-webui\venv\Scripts\python.exe %USERPROFILE%\open-webui\doctor.py
    ```
 5. **Tests unitaires** (hors ligne, sans Ollama, moins d'une seconde) :
    ```bash
-   C:\Users\hprof\open-webui\venv\Scripts\python.exe -m unittest discover -s tests
+   %USERPROFILE%\open-webui\venv\Scripts\python.exe -m unittest discover -s tests
    ```
 
 ## Mode bureautique (v1.7)
@@ -412,7 +412,7 @@ Open WebUI arrive avec son logo, des suggestions de départ grand public (« Don
 - **Langue** : français par défaut.
 
 Tout est posé par `install.py`. Deux points à connaître :
-- Open WebUI **recopie ses fichiers statiques à chaque démarrage** depuis son paquet : remplacer les fichiers servis ne suffit pas. `install.py` remplace donc ceux du paquet, après avoir mis les originaux de côté dans `C:\Users\hprof\open-webui\static-openwebui-original`. Une mise à jour d'Open WebUI les remet : relancer `install.py` (`doctor.py` le signale).
+- Open WebUI **recopie ses fichiers statiques à chaque démarrage** depuis son paquet : remplacer les fichiers servis ne suffit pas. `install.py` remplace donc ceux du paquet, après avoir mis les originaux de côté dans `%USERPROFILE%\open-webui\static-openwebui-original`. Une mise à jour d'Open WebUI les remet : relancer `install.py` (`doctor.py` le signale).
 - La **licence d'Open WebUI** autorise le remplacement de son logo pour les déploiements de moins de 50 utilisateurs sur 30 jours. Au-delà, restaurer les originaux ou obtenir une licence. Le nom « Open WebUI » reste dans le titre de l'onglet.
 
 Un piège rencontré : la capacité « citations » de la fiche d'un modèle doit rester active. Désactivée, l'interface efface les renvois `[n]` du texte, et les phrases perdent leurs sources.
@@ -454,7 +454,7 @@ Relecture complète du code (pipeline, lecteur radio, indexation, installation, 
 - **MedGemma 27B : non installé.** Avast Web Shield coupe le téléchargement (bloqué à 2 Mo sur 17 Go après 60 tentatives). Pour l'essayer, ajoutez dans Avast une exception pour `registry.ollama.ai` et `*.r2.cloudflarestorage.com`, puis lancez `ollama pull medgemma:27b`. On peut ensuite le mesurer avec `python eval/run_eval.py pro_full_mg27`.
 - **100 % hors ligne**, à votre demande : ni PubMed ni OpenFDA. Les connaissances du modèle peuvent donc être datées. Les règles du prompt lui font le dire.
 - **Open WebUI via pip au lieu de Docker.** Docker Desktop plante sur ce PC : Windows refuse de supprimer ses sockets Unix (erreur 1920).
-- **Certificats Avast.** Avast intercepte le HTTPS. `C:\Users\hprof\open-webui\ca-bundle.pem` contient les certificats certifi et la racine Avast, et la vérification SSL reste active.
+- **Certificats Avast.** Avast intercepte le HTTPS. `%USERPROFILE%\open-webui\ca-bundle.pem` contient les certificats certifi et la racine Avast, et la vérification SSL reste active.
 - [Modelfile](Modelfile) et le modèle `medassist` (4B) sont **obsolètes**. Ils ne servent plus que de point de comparaison dans le banc d'essai.
 
 ## Fichiers
@@ -462,11 +462,11 @@ Relecture complète du code (pipeline, lecteur radio, indexation, installation, 
 | Fichier | Rôle |
 |---|---|
 | [openwebui/medassist_pipe.py](openwebui/medassist_pipe.py) | le pipeline : prompts, tri, contrôles, fonction Open WebUI |
-| [openwebui/install.py](openwebui/install.py) | installation et mise à jour dans Open WebUI ; copie le lecteur radio et le script de lancement dans `C:\Users\hprof\open-webui` |
-| [knowledge/ingest.py](knowledge/ingest.py) | indexation de la base documentaire (copiée dans `C:\Users\hprof\open-webui\knowledge`) |
+| [openwebui/install.py](openwebui/install.py) | installation et mise à jour dans Open WebUI ; copie le lecteur radio et le script de lancement dans `%USERPROFILE%\open-webui` |
+| [knowledge/ingest.py](knowledge/ingest.py) | indexation de la base documentaire (copiée dans `%USERPROFILE%\open-webui\knowledge`) |
 | [radiology/](radiology/) | lecteur spécialisé (modèle, service local, seuils calibrés, calibration sur site) |
 | [start-medassist.ps1](start-medassist.ps1) | lancement : attend Ollama, vérifie les modèles, clé de session fixe, mode hors ligne, lecteur radio, Open WebUI |
-| [doctor.py](doctor.py) | contrôle de l'installation (copié dans `C:\Users\hprof\open-webui`) |
+| [doctor.py](doctor.py) | contrôle de l'installation (copié dans `%USERPROFILE%\open-webui`) |
 | [requirements.txt](requirements.txt), [requirements-cxr.txt](requirements-cxr.txt) | dépendances Python des deux environnements (Open WebUI ; lecteur radio) |
 | [docs/](docs/) | captures de l'interface et vidéo de démonstration (40 s) |
 | [openwebui/make_branding.py](openwebui/make_branding.py) | génère le logo et les icônes MedAssist dans [openwebui/static](openwebui/static) (avec la feuille de style `custom.css`) |
@@ -476,7 +476,7 @@ Relecture complète du code (pipeline, lecteur radio, indexation, installation, 
 
 ## Dépannage
 
-- **Page de connexion après un redémarrage** : ne devrait plus arriver depuis la v1.6 (clé de session fixe dans `C:\Users\hprof\open-webui\.webui_secret_key`). Si elle revient, cette clé a été supprimée : reconnectez-vous.
+- **Page de connexion après un redémarrage** : ne devrait plus arriver depuis la v1.6 (clé de session fixe dans `%USERPROFILE%\open-webui\.webui_secret_key`). Si elle revient, cette clé a été supprimée : reconnectez-vous.
 - **Première réponse lente (~25 s de plus)** : c'est le chargement du modèle. Il reste ensuite en mémoire 30 min.
 - **Questions coupées après une longue attente** : le PC s'est mis en veille pendant le calcul.
 - **Logo Open WebUI revenu, suggestions génériques** : une mise à jour d'Open WebUI a remis ses fichiers ; relancez `openwebui\install.py` (`doctor.py` le signale).
